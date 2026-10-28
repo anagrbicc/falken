@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Falken HSG Bieberau·Modau — Handball in Südhessen</title>
+<meta name="description" content="Offizielle Website der Falken HSG Groß-Bieberau/Modau — Spiele, Ergebnisse, Teams und News aus dem Handball in Südhessen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E0F12; --ink2:#121419; --surf:#171A21; --surf2:#1E2229; --surf3:#262B34;
+  --line:rgba(255,255,255,.085); --line2:rgba(255,255,255,.16);
+  --text:#F4F4F1; --muted:#9BA1AA; --muted2:#737A84;
+  --gold:#F6C21C; --goldd:#E0AC00; --red:#E0262E; --redd:#B81d24; --green:#39C07A;
+  --disp:'Oswald',system-ui,sans-serif; --body:'Inter',system-ui,-apple-system,sans-serif;
+  --wrap:1240px;
+}
+*{box-sizing:border-box}
+body{margin:0}
+.page{background:var(--ink);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+h1,h2,h3,h4{margin:0;font-family:var(--disp);font-weight:700;letter-spacing:.01em;line-height:1}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.eyebrow{font-family:var(--disp);font-weight:600;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.sec-pad{padding:clamp(56px,7vw,104px) 0}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:600;font-size:15px;letter-spacing:.07em;text-transform:uppercase;padding:14px 24px;border-radius:2px;border:1px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease,color .15s ease,border-color .15s ease}
+.btn svg{width:16px;height:16px}
+.btn-gold{background:var(--gold);color:#121212;border-color:var(--gold)}
+.btn-gold:hover{background:var(--goldd);border-color:var(--goldd);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--line2)}
+.btn-ghost:hover{border-color:var(--text);background:rgba(255,255,255,.04)}
+.btn-red{background:var(--red);color:#fff;border-color:var(--red)}
+.btn-red:hover{background:var(--redd);border-color:var(--redd);transform:translateY(-1px)}
+.link-more{display:inline-flex;align-items:center;gap:7px;font-family:var(--disp);font-weight:600;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--text)}
+.link-more svg{width:15px;height:15px;transition:transform .15s ease}
+.link-more:hover{color:var(--gold)}
+.link-more:hover svg{transform:translateX(3px)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+/* i18n toggle */
+.en{display:none}
+#lang-en:checked ~ .page .de{display:none}
+#lang-en:checked ~ .page .en{display:inline}
+
+/* HEADER */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(14,15,18,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);box-shadow:0 10px 30px -18px rgba(0,0,0,.9)}
+.hdr-in{display:flex;align-items:center;gap:26px;height:80px}
+.brand{display:flex;align-items:center;gap:13px;flex:0 0 auto}
+.brand .crest{height:48px;width:48px;object-fit:contain}
+.brand .wm{display:flex;flex-direction:column;line-height:1}
+.brand .wm-main{font-family:var(--disp);font-weight:700;font-size:25px;letter-spacing:.05em;text-transform:uppercase;color:#fff}
+.brand .wm-sub{font-family:var(--disp);font-weight:600;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.nav{display:flex;align-items:center;gap:28px;margin-left:16px}
+.nav a{font-family:var(--disp);font-weight:600;font-size:14px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);position:relative;padding:6px 0;transition:color .15s ease;white-space:nowrap}
+.nav a:hover{color:var(--text)}
+.nav a.active{color:var(--text)}
+.nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:3px;background:var(--gold)}
+.hdr-cta{display:flex;align-items:center;gap:14px;margin-left:auto;flex:0 0 auto}
+.hdr-cta .ghost-link{font-family:var(--disp);font-weight:600;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+.hdr-cta .ghost-link:hover{color:var(--text)}
+.hdr-cta .ghost-link svg{width:13px;height:13px}
+/* language pill */
+.langpill{display:inline-flex;align-items:stretch;border:1px solid var(--line2);border-radius:3px;overflow:hidden;cursor:pointer;font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.09em}
+.langpill .seg{padding:8px 11px;color:var(--muted);display:flex;align-items:center;transition:background .15s ease,color .15s ease}
+.langpill .de-seg{background:var(--gold);color:#121212}
+.langpill .en-seg{background:transparent}
+#lang-en:checked ~ .page .langpill .de-seg{background:transparent;color:var(--muted)}
+#lang-en:checked ~ .page .langpill .en-seg{background:var(--gold);color:#121212}
+.burger{display:none;width:46px;height:46px;border:1px solid var(--line2);border-radius:3px;background:transparent;color:var(--text);align-items:center;justify-content:center;cursor:pointer}
+.burger svg{width:22px;height:22px}
+
+/* HERO */
+.hero{position:relative;min-height:720px;display:flex;align-items:flex-end;overflow:hidden;background:#000}
+.hero-img{position:absolute;left:0;top:0;width:100%;height:128%;object-fit:cover;object-position:50% 42%;animation:heroPar linear both;animation-timeline:view()}
+@keyframes heroPar{from{transform:translateY(0)}to{transform:translateY(-22%)}}
+.hero-shade{position:absolute;inset:0;background:
+   linear-gradient(90deg,rgba(10,11,14,.92) 0%,rgba(10,11,14,.66) 38%,rgba(10,11,14,.2) 70%,rgba(10,11,14,.5) 100%),
+   linear-gradient(0deg,rgba(10,11,14,.95) 2%,rgba(10,11,14,0) 46%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:100% 54px;opacity:.5;mask-image:linear-gradient(0deg,#000,transparent 60%)}
+.hero-in{position:relative;z-index:2;width:100%;padding-top:72px;padding-bottom:0}
+.hero-flex{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.hero-copy{max-width:780px}
+.hero-kicker{display:inline-flex;align-items:center;gap:12px;margin-bottom:22px}
+.hero-kicker .bar{width:40px;height:3px;background:var(--red)}
+.hero h1{font-size:clamp(58px,8.2vw,124px);line-height:.92;letter-spacing:-.01em;text-transform:uppercase;text-shadow:0 2px 30px rgba(0,0,0,.4)}
+.hero h1 .g{color:var(--gold)}
+.hero-sub{margin:24px 0 32px;font-size:clamp(17px,1.5vw,21px);color:#D9DCE1;max-width:600px;line-height:1.55;text-wrap:pretty}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;padding-bottom:40px}
+.nextchip{background:rgba(23,26,33,.86);backdrop-filter:blur(10px);border:1px solid var(--line2);border-radius:6px;padding:18px 22px;min-width:304px;position:absolute;right:clamp(20px,3vw,52px);bottom:30px;z-index:4;box-shadow:0 20px 50px -22px rgba(0,0,0,.85);max-width:calc(100vw - 40px)}
+.nextchip .nl{display:flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.nextchip .nl .dot{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(224,38,46,.22)}
+.nextchip .when{font-family:var(--disp);font-weight:600;font-size:15px;color:#fff;letter-spacing:.03em;margin-bottom:10px}
+.nextchip .teams{font-size:14px;color:var(--muted);line-height:1.5}
+.nextchip .teams strong{color:#fff;font-weight:600}
+
+/* MATCH CENTER */
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:38px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(32px,4vw,52px);text-transform:uppercase;letter-spacing:.005em}
+.sec-head .sub{color:var(--muted);font-size:15px;margin-top:8px;max-width:560px}
+.mc{background:var(--ink2);border-top:1px solid var(--line)}
+.mc-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:20px}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:6px}
+.match-feat{padding:30px 32px;display:flex;flex-direction:column;gap:22px;position:relative;overflow:hidden}
+.match-feat::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--gold)}
+.mf-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:6px 11px;border-radius:2px}
+.tag-gold{background:rgba(246,194,28,.14);color:var(--gold);border:1px solid rgba(246,194,28,.3)}
+.tag-live{background:var(--red);color:#fff}
+.mf-meta{display:flex;gap:22px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+.mf-meta>span{display:inline-flex;align-items:center;gap:8px}
+.mf-meta svg{width:16px;height:16px;color:var(--gold)}
+.mf-teams{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;padding:10px 0}
+.mf-team{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
+.mf-team .crest{width:56px;height:56px;border-radius:50%;background:var(--surf2);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:700;color:var(--muted);font-size:18px}
+.mf-team.home .crest{background:#1b1c12;border-color:rgba(246,194,28,.4);color:var(--gold)}
+.mf-team .tn{font-family:var(--disp);font-weight:600;font-size:17px;letter-spacing:.02em}
+.mf-team .tr{font-size:12px;color:var(--muted2);text-transform:uppercase;letter-spacing:.1em}
+.mf-vs{font-family:var(--disp);font-weight:700;font-size:28px;color:var(--muted2)}
+.mf-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid var(--line);padding-top:18px;flex-wrap:wrap}
+.mc-side{display:flex;flex-direction:column;gap:20px}
+.result{padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.result .rh{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.result .rh .cat{font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.rowres{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.rowres .nm{font-size:14px;color:var(--text)}
+.rowres .nm.win{font-weight:600}
+.rowres .sc{font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:.04em}
+.outcome{display:inline-flex;align-items:center;gap:6px;font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border-radius:2px}
+.outcome.win{background:rgba(57,192,122,.14);color:var(--green);border:1px solid rgba(57,192,122,.3)}
+.outcome.loss{background:rgba(255,255,255,.06);color:var(--muted);border:1px solid var(--line2)}
+.outcome svg{width:12px;height:12px}
+
+/* NEWS */
+.news{background:var(--ink)}
+.news-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:22px}
+.feat{position:relative;border-radius:6px;overflow:hidden;min-height:460px;display:flex;align-items:flex-end;border:1px solid var(--line)}
+.feat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.feat:hover img{transform:scale(1.04)}
+.feat .shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,11,14,.95) 6%,rgba(10,11,14,.3) 54%,rgba(10,11,14,.1) 100%)}
+.feat-in{position:relative;z-index:2;padding:34px 36px;max-width:640px}
+.cat{display:inline-flex;align-items:center;font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#0E0F12;background:var(--gold);padding:5px 10px;border-radius:2px}
+.feat .date{color:var(--muted);font-size:13px;margin:16px 0 10px;letter-spacing:.04em}
+.feat h3{font-size:clamp(24px,2.6vw,34px);text-transform:uppercase;line-height:1.02;letter-spacing:.01em}
+.feat p{color:#C9CDD4;margin-top:12px;font-size:15px;max-width:520px}
+.feat .link-more{margin-top:18px}
+.news-side{display:flex;flex-direction:column;gap:18px}
+.ncard{display:flex;gap:16px;background:var(--surf);border:1px solid var(--line);border-radius:6px;padding:16px;transition:border-color .15s ease,transform .15s ease}
+.ncard:hover{border-color:var(--line2);transform:translateY(-2px)}
+.ncard .thumb{flex:0 0 94px;height:84px;border-radius:4px;overflow:hidden;background:var(--surf2);position:relative}
+.ncard .thumb img{width:100%;height:100%;object-fit:cover}
+.ncard .thumb.score{display:flex;align-items:center;justify-content:center;flex-direction:column;background:linear-gradient(135deg,#1b1e25,#121419);border:1px solid var(--line)}
+.ncard .thumb.score .s{font-family:var(--disp);font-weight:700;font-size:22px;color:var(--text);letter-spacing:.04em}
+.ncard .thumb.score .s b{color:var(--gold)}
+.ncard .thumb.score .lbl{font-family:var(--disp);font-size:9px;letter-spacing:.14em;color:var(--muted2);text-transform:uppercase;margin-top:3px}
+.ncard .thumb.fans{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#2a1d1e,#141419)}
+.ncard .thumb.fans svg{width:30px;height:30px;color:var(--red)}
+.ncard .nbody{min-width:0}
+.ncard .nmeta{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.ncard .nmeta .c{font-family:var(--disp);font-weight:600;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.ncard .nmeta .d{font-size:11px;color:var(--muted2)}
+.ncard h4{font-family:var(--disp);font-weight:600;font-size:16px;line-height:1.14;text-transform:uppercase;letter-spacing:.01em}
+.ncard p{font-size:13px;color:var(--muted);margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* TEAMS */
+.teams{background:var(--ink2);border-top:1px solid var(--line)}
+.teams-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;align-items:stretch}
+.teams-media{position:relative;border-radius:6px;overflow:hidden;min-height:420px;border:1px solid var(--line)}
+.teams-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.teams-media .cap{position:absolute;left:0;right:0;bottom:0;padding:22px 24px;background:linear-gradient(0deg,rgba(10,11,14,.92),transparent);z-index:2}
+.teams-media .cap .t{font-family:var(--disp);font-weight:700;font-size:22px;text-transform:uppercase;letter-spacing:.02em}
+.teams-media .cap .s{color:var(--muted);font-size:13px;margin-top:4px}
+.teams-media .tm-layer{position:absolute;inset:0;opacity:0;transition:opacity .45s ease}
+.teams-media .tm-layer img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.teams-media .tm-layer.l1{opacity:1}
+.teams-grid:has(.teamrow:hover) .tm-layer,.teams-grid:has(.teamrow:focus-within) .tm-layer{opacity:0}
+.teams-grid:has(.r1:hover) .l1,.teams-grid:has(.r1:focus-within) .l1,.teams-grid:has(.r2:hover) .l2,.teams-grid:has(.r2:focus-within) .l2,.teams-grid:has(.r3:hover) .l3,.teams-grid:has(.r3:focus-within) .l3,.teams-grid:has(.r4:hover) .l4,.teams-grid:has(.r4:focus-within) .l4{opacity:1}
+.teamrow{cursor:pointer}
+.teamlist{display:flex;flex-direction:column}
+.teamlist .teamrow{flex:1}
+.teamrow{display:flex;align-items:center;gap:20px;padding:24px 4px;border-bottom:1px solid var(--line);position:relative;transition:padding-left .18s ease}
+.teamrow:first-child{border-top:1px solid var(--line)}
+.teamrow::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--gold);transition:width .18s ease}
+.teamrow:hover{padding-left:18px}
+.teamrow:hover::before{width:4px}
+.teamrow .num{font-family:var(--disp);font-weight:700;font-size:14px;color:var(--muted2);width:34px}
+.teamrow .tinfo{flex:1}
+.teamrow .tinfo .tt{font-family:var(--disp);font-weight:600;font-size:21px;text-transform:uppercase;letter-spacing:.02em}
+.teamrow .tinfo .td{color:var(--muted);font-size:13px;margin-top:3px}
+.teamrow .arr{width:40px;height:40px;border-radius:50%;border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .18s ease}
+.teamrow:hover .arr{background:var(--gold);border-color:var(--gold);color:#121212}
+.teamrow .arr svg{width:17px;height:17px}
+
+/* CLUB */
+.club{background:var(--ink)}
+.club-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.club-copy h2{font-size:clamp(32px,4vw,52px);text-transform:uppercase;margin-bottom:22px}
+.club-copy p{color:var(--muted);font-size:16px;margin-bottom:16px;max-width:520px}
+.club-copy p strong{color:var(--text);font-weight:600}
+.club-tiles{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tile{background:var(--surf);border:1px solid var(--line);border-radius:6px;padding:24px;display:flex;flex-direction:column;gap:12px;min-height:168px;transition:border-color .15s ease,transform .15s ease}
+.tile:hover{border-color:var(--line2);transform:translateY(-2px)}
+.tile .ti{width:42px;height:42px;border-radius:3px;background:rgba(246,194,28,.12);display:flex;align-items:center;justify-content:center;color:var(--gold)}
+.tile .ti svg{width:22px;height:22px}
+.tile h4{font-family:var(--disp);font-weight:600;font-size:18px;text-transform:uppercase;letter-spacing:.02em}
+.tile p{color:var(--muted);font-size:13.5px;line-height:1.5}
+.tile .link-more{margin-top:auto;font-size:12px}
+.tile.red .ti{background:rgba(224,38,46,.14);color:var(--red)}
+
+/* SPONSORS */
+.spon{background:var(--ink2);border-top:1px solid var(--line);padding-top:clamp(34px,3.6vw,48px)}
+.spon-head{text-align:center;margin-bottom:40px}
+.spon-head .eyebrow{color:var(--muted)}
+.spon-head h2{font-size:clamp(26px,3vw,40px);text-transform:uppercase;margin-top:10px}
+.spon-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.spon-cell{background:var(--surf);display:flex;align-items:center;justify-content:center;padding:30px 18px;min-height:112px;transition:background .15s ease}
+.spon-cell:hover{background:var(--surf2)}
+.spon-cell span{font-family:var(--disp);font-weight:600;font-size:17px;letter-spacing:.04em;color:var(--muted);text-align:center;text-transform:uppercase;transition:color .15s ease}
+.spon-cell:hover span{color:var(--text)}
+.spon-foot{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:30px;flex-wrap:wrap}
+.spon-note{text-align:center;color:var(--muted2);font-size:12px;margin-top:16px}
+.spon-marquee{position:relative;overflow:hidden;margin-top:4px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.spon-track{display:flex;width:max-content;animation:spon-scroll 42s linear infinite}
+.spon-marquee:hover .spon-track{animation-play-state:paused}
+@keyframes spon-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.spon-chip{flex:0 0 auto;display:flex;align-items:center;justify-content:center;margin-right:16px;background:#fff;border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:0 26px;height:92px;min-width:150px;transition:transform .15s ease,box-shadow .15s ease}
+.spon-chip:hover{transform:translateY(-2px);box-shadow:0 10px 26px -12px rgba(0,0,0,.7)}
+.spon-chip img{max-height:46px;max-width:172px;width:auto;object-fit:contain}
+@media (prefers-reduced-motion:reduce){.spon-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}}
+
+/* FOOTER */
+.ft{background:#0A0B0E;border-top:1px solid var(--line);padding:64px 0 28px}
+.ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px}
+.ft-brand .ft-lockup{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.ft-brand .ft-lockup img{height:44px;width:44px;object-fit:contain}
+.ft-brand .ft-lockup .m{font-family:var(--disp);font-weight:700;font-size:22px;letter-spacing:.05em;text-transform:uppercase;color:#fff;line-height:1}
+.ft-brand .ft-lockup .sb{font-family:var(--disp);font-weight:600;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.ft-brand p{color:var(--muted);font-size:14px;max-width:300px;margin-bottom:20px}
+.social{display:flex;gap:10px}
+.social a{width:40px;height:40px;border-radius:3px;border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .15s ease}
+.social a:hover{background:var(--gold);border-color:var(--gold);color:#121212}
+.social svg{width:18px;height:18px}
+.ft-col h5{font-family:var(--disp);font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);margin-bottom:16px}
+.ft-col a{display:block;color:var(--muted);font-size:14px;padding:6px 0;transition:color .15s ease}
+.ft-col a:hover{color:var(--gold)}
+.ft-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid var(--line);margin-top:48px;padding-top:24px;flex-wrap:wrap}
+.ft-bar p{color:var(--muted2);font-size:13px}
+.ft-bar .legal{display:flex;gap:20px;flex-wrap:wrap}
+.ft-bar .legal a{color:var(--muted);font-size:13px}
+.ft-bar .legal a:hover{color:var(--text)}
+
+/* RESPONSIVE */
+@media (max-width:1080px){
+  .nav{display:none}
+  .burger{display:inline-flex}
+  .hdr-cta .ghost-link{display:none}
+  .mc-grid{grid-template-columns:1fr}
+  .news-grid{grid-template-columns:1fr}
+  .teams-grid{grid-template-columns:1fr}
+  .teams-media{min-height:320px}
+  .club-grid{grid-template-columns:1fr;gap:34px}
+  .spon-grid{grid-template-columns:repeat(3,1fr)}
+  .ft-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  .hero{min-height:600px}
+  .hero-actions{padding-bottom:28px}
+  .nextchip{display:none}
+  .brand .wm-sub{display:none}
+  .club-tiles{grid-template-columns:1fr}
+  .spon-grid{grid-template-columns:repeat(2,1fr)}
+  .ft-grid{grid-template-columns:1fr}
+  .mf-foot{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ===== scroll-reveal as sections enter ===== */
+@media (prefers-reduced-motion:no-preference){
+  .mc .sec-head,.news .sec-head,.teams .sec-head,.spon-head,
+  .mc-grid>*,.news-grid>*,.teams-media,.teamlist>*,.club-copy,.club-tiles>*,.ft-grid>*{
+    animation:revealUp linear both;animation-timeline:view();animation-range:entry 8% entry 42%}
+  @keyframes revealUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+}
+/* ===== extra parallax on the featured news image ===== */
+@media (prefers-reduced-motion:no-preference){
+  .feat img{animation:featPar linear both;animation-timeline:view()}
+  @keyframes featPar{from{transform:scale(1.14) translateY(-5%)}to{transform:scale(1.14) translateY(5%)}}
+}
+/* ===== subtle per-section colour accents (less monotone) ===== */
+.mc,.teams,.club,.spon{position:relative;isolation:isolate}
+.mc::before,.teams::before,.club::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none}
+.mc::before{background:radial-gradient(75% 95% at 10% -15%,rgba(224,38,46,.10),transparent 60%)}
+.teams::before{background:radial-gradient(70% 95% at 94% -10%,rgba(246,194,28,.09),transparent 58%)}
+.club::before{background:radial-gradient(90% 90% at 50% 125%,rgba(246,194,28,.07),transparent 62%)}
+
+/* ===== header Teams dropdown ===== */
+.nav-item{position:relative;display:inline-flex;align-items:center}
+.nav-item.has-sub > a{display:inline-flex;align-items:center;gap:6px}
+.nav-item .chev{width:12px;height:12px;transition:transform .2s ease;color:var(--muted2)}
+.nav-item.has-sub:hover > a .chev,.nav-item.has-sub:focus-within > a .chev{transform:rotate(180deg)}
+.subnav{position:absolute;top:100%;left:-12px;margin-top:10px;min-width:214px;background:rgba(18,20,25,.98);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line2);border-radius:7px;padding:8px;display:flex;flex-direction:column;gap:2px;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .18s ease,visibility .18s;box-shadow:0 22px 44px -18px rgba(0,0,0,.85);z-index:60}
+.subnav::before{content:"";position:absolute;top:-12px;left:0;right:0;height:14px}
+.nav-item.has-sub:hover .subnav,.nav-item.has-sub:focus-within .subnav{opacity:1;visibility:visible;transform:translateY(0)}
+.subnav a{font-family:var(--disp);font-weight:600;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);padding:10px 14px;border-radius:5px;white-space:nowrap;transition:background .15s ease,color .15s ease,padding-left .15s ease}
+.subnav a:hover{background:rgba(246,194,28,.12);color:var(--gold);padding-left:18px}
+
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+section[id],.tile[id]{scroll-margin-top:98px}
+
+.nextchip .countdown{display:flex;gap:7px;margin:2px 0 12px}
+.nextchip .cd{flex:1;background:rgba(10,11,14,.5);border:1px solid var(--line);border-radius:4px;padding:8px 2px}
+.nextchip .cd .num{display:block;text-align:center;font-family:var(--disp);font-weight:700;font-size:23px;color:#fff;line-height:1;font-variant-numeric:tabular-nums}
+.nextchip .cd .lab{display:block;text-align:center;font-family:var(--disp);font-weight:600;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-top:5px}
+
+.nextchip .matchup{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:2px 0 12px;padding:10px 8px;background:rgba(10,11,14,.42);border:1px solid var(--line);border-radius:4px}
+.nextchip .mu-team{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;min-width:0}
+.nextchip .mu-team img{width:40px;height:40px;object-fit:contain}
+.nextchip .mu-team span{font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:#fff;white-space:nowrap}
+.nextchip .mu-vs{font-family:var(--disp);font-weight:700;font-size:13px;color:var(--gold);flex:0 0 auto}
+.mf-team .crest.logo{background:transparent;border:0}
+.mf-team .crest.logo img{width:100%;height:100%;object-fit:contain}
+
+.mf-countdown{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 16px;background:rgba(10,11,14,.4);border:1px solid var(--line);border-radius:6px}
+.mf-countdown .cd-label{font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.mf-countdown .cd-boxes{display:flex;gap:8px;flex:1;min-width:230px}
+.mf-countdown .cd{flex:1;background:var(--surf2);border:1px solid var(--line);border-radius:4px;padding:8px 4px;text-align:center}
+.mf-countdown .cd .num{display:block;font-family:var(--disp);font-weight:700;font-size:24px;color:#fff;line-height:1;font-variant-numeric:tabular-nums}
+.mf-countdown .cd .lab{display:block;font-family:var(--disp);font-weight:600;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-top:5px}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&amp;display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;display=swap">
+</head>
+<body>
+<input type="checkbox" id="lang-en" class="lang-toggle sr-only" aria-label="Switch language to English / Sprache auf Englisch umschalten">
+
+<div class="page">
+
+  <!-- ============ HEADER ============ -->
+  <header class="hdr">
+    <div class="wrap hdr-in">
+      <a class="brand" href="#top" aria-label="Falken HSG Groß-Bieberau/Modau — Startseite">
+        <img class="crest" src="assets/crest.png" alt="">
+        <span class="wm">
+          <span class="wm-main">Falken</span>
+          <span class="wm-sub">HSG Bieberau·Modau</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="#aktuelles" class="active" aria-current="page"><span class="de">Aktuelles</span><span class="en">News</span></a>
+        <div class="nav-item has-sub">
+          <a href="#teams" aria-haspopup="true"><span class="de">Teams</span><span class="en">Teams</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></a>
+          <div class="subnav" role="menu">
+            <a href="#teams" role="menuitem"><span class="de">Herren I</span><span class="en">Men I</span></a>
+            <a href="#teams" role="menuitem"><span class="de">Herren II</span><span class="en">Men II</span></a>
+            <a href="#teams" role="menuitem"><span class="de">Damen</span><span class="en">Women</span></a>
+            <a href="#teams" role="menuitem">Jugend · Jungfalken</a>
+          </div>
+        </div>
+        <a href="#verein"><span class="de">Über uns</span><span class="en">About us</span></a>
+        <a href="#hussa">HUSSA!</a>
+        <a href="#sponsoren"><span class="de">Sponsoren</span><span class="en">Sponsors</span></a>
+      </nav>
+      <div class="hdr-cta">
+        <label class="langpill" for="lang-en" title="DE / EN">
+          <span class="seg de-seg">DE</span><span class="seg en-seg">EN</span>
+        </label>
+        <a class="ghost-link" href="#">Shop
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+        </a>
+        <a class="btn btn-gold" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 10a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2 2 2 0 0 0 0 4 2 2 0 0 1-2 2H5a2 2 0 0 1-2-2 2 2 0 0 0 0-4Z"></path><path d="M12 8v8" stroke-dasharray="2 2"></path></svg>
+          Tickets
+        </a>
+        <button class="burger" aria-label="Menü">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <img class="hero-img" src="assets/hero.jpg" alt="Mannschaft der Falken HSG im Kreis vor dem Spiel">
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-in">
+      <div class="wrap" style="width: 1372px; height: 529px">
+        <div class="hero-copy">
+          <span class="hero-kicker"><span class="eyebrow"><span class="de">Regionalliga · Saison 2026 / 2027</span><span class="en">Regionalliga · Season 2026 / 2027</span></span></span>
+          <h1><span class="de">Wir sind<br><span class="g">Falken.</span></span><span class="en">We are<br><span class="g">Falken.</span></span></h1>
+          <p class="hero-sub" style="font-weight: 400; font-family: DM Sans, sans-serif; width: 603px"><span class="de">Leidenschaft. Teamgeist. Handball.<br>Die HSG Groß-Bieberau/Modau – zu Hause in Südhessen, laut auf der Tribüne, geschlossen auf dem Feld.</span><span class="en">Passion. Team spirit. Handball. HSG Groß-Bieberau/Modau – at home in South Hesse, loud in the stands, united on the court.</span></p>
+        <div class="hero-actions">
+            <a class="btn btn-gold" href="#spiele">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+              <span class="de">Nächstes Spiel</span><span class="en">Next Match</span>
+            </a>
+            <a class="btn btn-ghost" href="#teams"><span class="de">Alle Teams</span><span class="en">All Teams</span></a>
+          </div></div>
+        <div class="hero-flex">
+          
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SPONSORS ============ -->
+  <div class="wrap">
+  <div class="spon-marquee">
+        <div class="spon-track">
+          <div class="spon-chip"><img src="assets/merck.png" alt="Merck"></div>
+          <div class="spon-chip"><img src="assets/entega.png" alt="Entega"></div>
+          <div class="spon-chip"><img src="assets/jako.png" alt="JAKO"></div>
+          <div class="spon-chip"><img src="assets/sparkasse.png" alt="Sparkasse Dieburg"></div>
+          <div class="spon-chip"><img src="assets/radiologen.png" alt="Die Radiologen"></div>
+          <div class="spon-chip"><img src="assets/mhi.png" alt="MHI Gruppe"></div>
+          <div class="spon-chip"><img src="assets/assekuranz.png" alt="Assekuranz Michel"></div>
+          <div class="spon-chip"><img src="assets/schellhaas.png" alt="Praxis Dr. Schellhaas"></div>
+          <div class="spon-chip"><img src="assets/brass.png" alt="Brass"></div>
+          <div class="spon-chip"><img src="assets/brosig.png" alt="Brosig GmbH"></div>
+          <div class="spon-chip" aria-hidden="true"><img src="assets/merck.png" alt=""></div>
+          <div class="spon-chip" aria-hidden="true"><img src="assets/entega.png" alt=""></div>
+          <div class="spon-chip" aria-hidden="true"><img src="assets/jako.png" alt=""></div>
+          <div class="spon-chip" aria-hidden="true"><img src="assets/sparkasse.png" alt=""></div>
+          <div class="spon-chip" aria-hidden="true"><img src="assets/radiologen.png" alt=""></div>
+          <div class="spon-chip" aria-hidden="true"><img src="assets/mhi.png" alt=""></div>
+          <div class="spon-chip" aria-hidden="true"><img src="assets/assekuranz.png" alt=""></div>
+          <div class="spon-chip" aria-hidden="true"><img src="assets/schellhaas.png" alt=""></div>
+          <div class="spon-chip" aria-hidden="true"><img src="assets/brass.png" alt=""></div>
+          <div class="spon-chip" aria-hidden="true"><img src="assets/brosig.png" alt=""></div>
+        </div>
+      </div>
+  </div><section class="spon sec-pad" id="sponsoren">
+    <div class="wrap" style="height: 119px">
+      <div class="spon-head">
+        <span class="eyebrow"><span class="de">Partner &amp; Förderer</span><span class="en">Partners &amp; Supporters</span></span>
+        <h2><span class="de">Unsere Partner</span><span class="en">Our Partners</span></h2>
+      </div>
+      
+      <div class="spon-foot">
+        <a class="btn btn-gold" href="#"><span class="de">Sponsor werden</span><span class="en">Become a sponsor</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+      <p class="spon-note"><span class="de">Mit Dank an unsere Partner und Förderer.</span><span class="en">With thanks to our partners and supporters.</span></p>
+    </div>
+  </section>
+
+  <!-- ============ MATCH CENTER ============ -->
+  <section class="mc sec-pad" id="spiele">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow"><span class="de">Spielbetrieb</span><span class="en">Matches</span></span>
+          <h2><span class="de">Spiele &amp; Ergebnisse</span><span class="en">Matches &amp; Results</span></h2>
+          <p class="sub"><span class="de">Alle Spielpläne, Tabellen und Ergebnisse werden offiziell beim Hessischen Handball-Verband geführt.</span><span class="en">All fixtures, tables and results are kept officially by the Hesse Handball Federation.</span></p>
+        </div>
+        <a class="link-more" href="https://hhv-handball.liga.nu" target="_blank" rel="noopener"><span class="de">Tabelle &amp; Spielplan (HHV)</span><span class="en">Table &amp; Fixtures (HHV)</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+        </a>
+      </div>
+
+      <div class="mc-grid">
+        <article class="card match-feat">
+          <div class="mf-top">
+            <span class="tag tag-gold"><span class="de">Nächstes Spiel</span><span class="en">Next Match</span></span>
+            <span class="tag tag-live"><span class="de">Regionalliga · Herren I</span><span class="en">Regionalliga · Men I</span></span>
+          </div>
+          <div class="mf-meta">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>Fr, 06.11.2026</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>20:00 <span class="de">Uhr</span><span class="en">CET</span></span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span class="de">Heim · Groß-Bieberau</span><span class="en">Home · Groß-Bieberau</span></span>
+          </div>
+          <div class="mf-teams">
+            <div class="mf-team home">
+              <span class="crest logo"><img src="assets/crest.png" alt="Falken HSG"></span>
+              <span class="tn">Falken HSG Bieberau·Modau</span>
+              <span class="tr"><span class="de">Heim</span><span class="en">Home</span></span>
+            </div>
+            <span class="mf-vs" aria-hidden="true">VS</span>
+            <div class="mf-team">
+              <span class="crest logo"><img src="assets/breckenheim.png" alt="HSG Breckenheim Wallau/Massenheim"></span>
+              <span class="tn">HSG Breckenheim Wallau/Massenheim</span>
+              <span class="tr"><span class="de">Gast</span><span class="en">Away</span></span>
+            </div>
+          </div>
+          <div class="mf-countdown">
+            <span class="cd-label"><span class="de">Anpfiff in</span><span class="en">Kick-off in</span></span>
+            <div class="cd-boxes">
+              <div class="cd"><span class="num"><span id="cd-days">--</span></span><span class="lab"><span class="de">Tage</span><span class="en">Days</span></span></div>
+              <div class="cd"><span class="num"><span id="cd-hours">--</span></span><span class="lab"><span class="de">Std</span><span class="en">Hrs</span></span></div>
+              <div class="cd"><span class="num"><span id="cd-minutes">--</span></span><span class="lab">Min</span></div>
+              <div class="cd"><span class="num"><span id="cd-seconds">--</span></span><span class="lab">Sek</span></div>
+            </div>
+          </div>
+          <div class="mf-foot">
+            <p style="color:var(--muted);font-size:13px;margin:0"><span class="de">Heimspiel in der Hügelstraße — komm vorbei und unterstütze die Falken.</span><span class="en">Home game at the Hügelstraße — come and cheer the Falken on.</span></p>
+            <a class="btn btn-ghost" href="#"><span class="de">Spielvorschau</span><span class="en">Match Preview</span></a>
+          </div>
+        </article>
+
+        <div class="mc-side">
+          <article class="card result">
+            <div class="rh">
+              <span class="cat" style="color: #121212"><span class="de">Herren I</span><span class="en" style="color: #121212">Men I</span> · 17.10.2026</span>
+              <span class="outcome loss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 7l10 10M17 9v8h-8"></path></svg><span class="de">Niederlage</span><span class="en">Loss</span></span>
+            </div>
+            <div class="rowres"><span class="nm">TV Hüttenberg 2</span><span class="sc">32</span></div>
+            <div class="rowres"><span class="nm win">Falken HSG Bieberau·Modau</span><span class="sc" style="color:var(--gold)">29</span></div>
+            <p style="color:var(--muted2);font-size:12px;margin:0"><span class="de">Halbzeit 17:15 · Erste Saisonniederlage</span><span class="en">Half-time 17:15 · First defeat of the season</span></p>
+          </article>
+
+          <article class="card result">
+            <div class="rh">
+              <span class="cat" style="color: #121212"><span class="de">Damen</span><span class="en">Women</span> · 08.10.2026</span>
+              <span class="outcome win"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg><span class="de">Sieg</span><span class="en">Win</span></span>
+            </div>
+            <div class="rowres"><span class="nm">SV Erbach</span><span class="sc">25</span></div>
+            <div class="rowres"><span class="nm win">Falken HSG Bieberau·Modau</span><span class="sc" style="color:var(--gold)">26</span></div>
+            <p style="color:var(--muted2);font-size:12px;margin:0"><span class="de">Halbzeit 12:12 · Auswärtssieg in Erbach</span><span class="en">Half-time 12:12 · Away win at Erbach</span></p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEWS ============ -->
+  <section class="news sec-pad" id="aktuelles">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow"><span class="de">Aus dem Verein</span><span class="en">From the club</span></span>
+          <h2><span class="de">Aktuelles</span><span class="en">News</span></h2>
+        </div>
+        <a class="link-more" href="#"><span class="de">Alle Beiträge</span><span class="en">All articles</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+
+      <div class="news-grid">
+        <article class="feat">
+          <img src="assets/muenster.jpg" alt="Robin Büttner im Einsatz im Falken-Trikot">
+          <div class="shade" aria-hidden="true"></div>
+          <div class="feat-in">
+            <span class="cat"><span class="de">Verein</span><span class="en">Club</span></span>
+            <p class="date"><span class="de">6. Oktober 2026</span><span class="en">6 October 2026</span></p>
+            <h3><span class="de">Robin Büttner beendet seine aktive Handball­karriere</span><span class="en">Robin Büttner ends his active handball career</span></h3>
+            <p><span class="de">Nach zwölf Jahren im Falken-Trikot beendet Robin Büttner verletzungsbedingt seine aktive Laufbahn. Der Verein bedankt sich für eine prägende Zeit.</span><span class="en">After twelve years in a Falken shirt, Robin Büttner ends his playing career due to injury. The club thanks him for a defining era.</span></p>
+            <a class="link-more" href="#"><span class="de">Weiterlesen</span><span class="en">Read more</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </a>
+          </div>
+        </article>
+
+        <div class="news-side">
+          <a class="ncard" href="#">
+            <div class="thumb"><img src="assets/damen.jpg" alt="Damenmannschaft der Falken"></div>
+            <div class="nbody">
+              <div class="nmeta"><span class="c"><span class="de">Damen</span><span class="en">Women</span></span><span class="d">08.10.2026</span></div>
+              <h4><span class="de">Damen gewinnen in Erbach</span><span class="en">Women win at Erbach</span></h4>
+              <p><span class="de">Knapper Auswärtssieg beim SV Erbach — 26:25 (12:12).</span><span class="en">Narrow away win at SV Erbach — 26:25 (12:12).</span></p>
+            </div>
+          </a>
+          <a class="ncard" href="#">
+            <div class="thumb score"><span class="s">32:<b>29</b></span><span class="lbl">Hüttenberg</span></div>
+            <div class="nbody">
+              <div class="nmeta"><span class="c"><span class="de">Spielbericht</span><span class="en">Match report</span></span><span class="d">17.10.2026</span></div>
+              <h4><span class="de">Erste Saisonniederlage in Hüttenberg</span><span class="en">First defeat in Hüttenberg</span></h4>
+              <p><span class="de">TV Hüttenberg 2 – Falken 32:29 (17:15) nach umkämpftem Spiel.</span><span class="en">TV Hüttenberg 2 – Falken 32:29 (17:15) after a hard-fought game.</span></p>
+            </div>
+          </a>
+          <a class="ncard" href="#">
+            <div class="thumb fans" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"></path></svg>
+            </div>
+            <div class="nbody">
+              <div class="nmeta"><span class="c"><span class="de">Fans</span><span class="en">Fans</span></span><span class="d">12.10.2026</span></div>
+              <h4><span class="de">Fan-Unterstützung — auch auswärts!</span><span class="en">Fan support — away too!</span></h4>
+              <p><span class="de">Mitfahren, anfeuern, Teil der Falken-Familie sein.</span><span class="en">Travel along, cheer, be part of the Falken family.</span></p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEAMS ============ -->
+  <section class="teams sec-pad" id="teams">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow"><span class="de">Mannschaften</span><span class="en">Teams</span></span>
+          <h2><span class="de">Unsere Teams</span><span class="en">Our Teams</span></h2>
+        </div>
+      </div>
+      <div class="teams-grid">
+        <div class="teams-media">
+          <div class="tm-layer l1">
+            <img src="assets/team.jpg" alt="Teamfoto Herren I der Falken HSG">
+            <div class="cap"><div class="t"><span class="de">Herren I</span><span class="en">Men I</span></div><div class="s"><span class="de">Regionalliga · Saison 2026/2027</span><span class="en">Regionalliga · Season 2026/2027</span></div></div>
+          </div>
+          <div class="tm-layer l2">
+            <img src="assets/herren2.jpg" alt="Teamfoto Herren II der Falken HSG">
+            <div class="cap"><div class="t"><span class="de">Herren II</span><span class="en">Men II</span></div><div class="s"><span class="de">Reserve · 2. Mannschaft</span><span class="en">Reserve · Second team</span></div></div>
+          </div>
+          <div class="tm-layer l3">
+            <img src="assets/damen.jpg" alt="Damenmannschaft der Falken HSG">
+            <div class="cap"><div class="t"><span class="de">Damen</span><span class="en">Women</span></div><div class="s"><span class="de">Frauenhandball</span><span class="en">Women's handball</span></div></div>
+          </div>
+          <div class="tm-layer l4">
+            <img src="assets/jugend.jpg" alt="Jugendabteilung der Falken HSG mit allen Nachwuchsteams">
+            <div class="cap"><div class="t">Jugend · Jungfalken</div><div class="s"><span class="de">Nachwuchs · Jugendhandball</span><span class="en">Juniors · youth handball</span></div></div>
+          </div>
+        </div>
+        <div class="teamlist">
+          <a class="teamrow r1" href="#">
+            <span class="tinfo"><span class="tt"><span class="de">Herren I</span><span class="en">Men I</span></span><span class="td"><span class="de">Regionalliga · 1. Mannschaft</span><span class="en">Regionalliga · First team</span></span></span>
+            <span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+          </a>
+          <a class="teamrow r2" href="#">
+            <span class="tinfo"><span class="tt"><span class="de">Herren II</span><span class="en">Men II</span></span><span class="td"><span class="de">Reserve · 2. Mannschaft</span><span class="en">Reserve · Second team</span></span></span>
+            <span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+          </a>
+          <a class="teamrow r3" href="#">
+            <span class="tinfo"><span class="tt"><span class="de">Damen</span><span class="en">Women</span></span><span class="td"><span class="de">Frauenhandball</span><span class="en">Women's handball</span></span></span>
+            <span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+          </a>
+          <a class="teamrow r4" href="#">
+            <span class="tinfo"><span class="tt">Jugend · Jungfalken</span><span class="td"><span class="de">Nachwuchs von Minis bis A-Jugend</span><span class="en">Juniors from minis to U19</span></span></span>
+            <span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLUB ============ -->
+  <section class="club sec-pad" id="verein">
+    <div class="wrap">
+      <div class="club-grid">
+        <div class="club-copy">
+          <span class="eyebrow"><span class="de">Der Verein</span><span class="en">The Club</span></span>
+          <h2><span class="de">Eine Handball­familie in Südhessen</span><span class="en">A handball family in South Hesse</span></h2>
+          <p><span class="de">Die <strong>Falken HSG Groß-Bieberau/Modau</strong> stehen für engagierten Vereinshandball — getragen von ehrenamtlichem Einsatz, einer lebendigen Fankultur und starkem Nachwuchs.</span><span class="en">The <strong>Falken HSG Groß-Bieberau/Modau</strong> stand for committed club handball — carried by volunteer dedication, a lively fan culture and strong youth development.</span></p>
+          <p><span class="de">Von den jüngsten <strong>Jungfalken</strong> bis zur Regionalliga-Mannschaft: Hier wächst eine Gemeinschaft zusammen, auf dem Feld und auf der Tribüne.</span><span class="en">From the youngest <strong>Jungfalken</strong> to the Regionalliga squad: a community grows together here, on the court and in the stands.</span></p>
+        </div>
+        <div class="club-tiles">
+          <div class="tile">
+            <span class="ti" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 7l8 4 8-4-8-4ZM4 7v6l8 4 8-4V7M8 10v5"></path></svg></span>
+            <h4>Jungfalken</h4>
+            <p><span class="de">Jugendhandball mit Herz — Training, Teamgeist und Turniere für alle Altersklassen.</span><span class="en">Youth handball with heart — training, team spirit and tournaments for all age groups.</span></p>
+            <a class="link-more" href="#"><span class="de">Zur Jugend</span><span class="en">Youth section</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          </div>
+          <div class="tile red" id="hussa">
+            <span class="ti" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v13H7l-3 3V4Z"></path><path d="M8 9h8M8 12h5"></path></svg></span>
+            <h4><span class="de">HUSSA! Hallenheft</span><span class="en">HUSSA! Match-day magazine</span></h4>
+            <p><span class="de">Das Magazin zum Heimspiel — mit Gegner-Check, Statistiken und Geschichten aus dem Verein.</span><span class="en">The home-game magazine — with opponent previews, stats and stories from the club.</span></p>
+            <a class="link-more" href="#"><span class="de">Aktuelle Ausgabe</span><span class="en">Current issue</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="ft">
+    <div class="wrap">
+      <div class="ft-grid">
+        <div class="ft-brand">
+          <div class="ft-lockup">
+            <img src="assets/crest.png" alt="Falken HSG Logo">
+            <span class="wm"><span class="m">Falken</span><br><span class="sb">HSG Bieberau·Modau</span></span>
+          </div>
+          <p><span class="de">Falken HSG Groß-Bieberau/Modau — Handball mit Leidenschaft in Südhessen.</span><span class="en">Falken HSG Groß-Bieberau/Modau — handball with passion in South Hesse.</span></p>
+          <div class="social">
+            <a href="https://www.facebook.com/FalkenHSG/" target="_blank" rel="noopener" aria-label="Falken HSG auf Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3V6h-3c-1.9 0-3 1.3-3 3v2H8v3h3v7h3v-7h3l1-3h-4V9.2c0-.1.3-.2.6-.2Z"></path></svg>
+            </a>
+          </div>
+        </div>
+        <div class="ft-col">
+          <h5>Teams</h5>
+          <a href="#"><span class="de">Herren I</span><span class="en">Men I</span></a>
+          <a href="#"><span class="de">Herren II</span><span class="en">Men II</span></a>
+          <a href="#"><span class="de">Damen</span><span class="en">Women</span></a>
+          <a href="#">Jugend · Jungfalken</a>
+        </div>
+        <div class="ft-col">
+          <h5><span class="de">Verein</span><span class="en">Club</span></h5>
+          <a href="#aktuelles"><span class="de">Aktuelles</span><span class="en">News</span></a>
+          <a href="#spiele"><span class="de">Spielplan</span><span class="en">Fixtures</span></a>
+          <a href="#"><span class="de">HUSSA! Hallenheft</span><span class="en">HUSSA! Magazine</span></a>
+          <a href="#sponsoren"><span class="de">Sponsoren</span><span class="en">Sponsors</span></a>
+          <a href="#">FALKEN Shop</a>
+        </div>
+        <div class="ft-col">
+          <h5>Service</h5>
+          <a href="#">Tickets</a>
+          <a href="https://hhv-handball.liga.nu" target="_blank" rel="noopener"><span class="de">Tabellen (HHV)</span><span class="en">Tables (HHV)</span></a>
+          <a href="https://www.hsg-bieberau-modau.de/impressum/" target="_blank" rel="noopener">Impressum</a>
+          <a href="https://www.hsg-bieberau-modau.de/datenschutz/" target="_blank" rel="noopener">Datenschutz</a>
+        </div>
+      </div>
+      <div class="ft-bar">
+        <p>© 2026 Falken HSG Groß-Bieberau/Modau · <span class="de">Redesign-Konzept</span><span class="en">Redesign concept</span></p>
+        <div class="legal">
+          <a href="https://www.hsg-bieberau-modau.de/impressum/" target="_blank" rel="noopener">Impressum</a>
+          <a href="https://www.hsg-bieberau-modau.de/datenschutz/" target="_blank" rel="noopener">Datenschutz</a>
+          <a href="https://www.hsg-bieberau-modau.de/haftungsausschluss/" target="_blank" rel="noopener">Haftungsausschluss</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var target = new Date('2026-11-06T20:00:00+01:00').getTime();
+  var el={d:'cd-days',h:'cd-hours',m:'cd-minutes',s:'cd-seconds'};
+  function p(n){return String(n).padStart(2,'0');}
+  function set(id,v){var e=document.getElementById(id); if(e) e.textContent=p(v);}
+  function tick(){
+    var ms=target-Date.now(); if(ms<0) ms=0;
+    var day=Math.floor(ms/86400000); ms-=day*86400000;
+    var hr=Math.floor(ms/3600000); ms-=hr*3600000;
+    var mi=Math.floor(ms/60000); ms-=mi*60000;
+    var se=Math.floor(ms/1000);
+    set(el.d,day); set(el.h,hr); set(el.m,mi); set(el.s,se);
+  }
+  tick(); setInterval(tick,1000);
+})();
+</script>
+</body>
+</html>
