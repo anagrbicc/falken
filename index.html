@@ -75,6 +75,42 @@ p{margin:0}
 #lang-en:checked ~ .page .langpill .en-seg{background:var(--gold);color:#121212}
 .burger{display:none;width:46px;height:46px;border:1px solid var(--line2);border-radius:3px;background:transparent;color:var(--text);align-items:center;justify-content:center;cursor:pointer}
 .burger svg{width:22px;height:22px}
+.burger .ic-close{display:none}
+.burger:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#nav-open:checked ~ .page .burger .ic-open{display:none}
+#nav-open:checked ~ .page .burger .ic-close{display:inline-flex}
+
+/* ===== mobile navigation drawer ===== */
+.mnav-backdrop{position:fixed;inset:0;z-index:60;background:rgba(6,7,9,.55);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
+.mnav{position:fixed;top:0;right:0;bottom:0;z-index:70;width:min(86vw,360px);
+  background:rgba(13,14,18,.99);border-left:1px solid var(--line2);
+  box-shadow:-30px 0 60px -30px rgba(0,0,0,.9);
+  display:flex;flex-direction:column;gap:8px;padding:84px 24px 28px;overflow-y:auto;
+  transform:translateX(100%);visibility:hidden;transition:transform .34s cubic-bezier(.4,0,.2,1),visibility .34s}
+#nav-open:checked ~ .page .mnav{transform:none;visibility:visible}
+#nav-open:checked ~ .page .mnav-backdrop{opacity:1;visibility:visible}
+.mnav-links{display:flex;flex-direction:column}
+.mnav-links > a{font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--text);padding:14px 2px;border-bottom:1px solid var(--line);transition:color .15s ease,padding-left .15s ease}
+.mnav-links > a:hover,.mnav-links > a:focus-visible{color:var(--gold);padding-left:6px}
+.mnav-group{display:flex;flex-direction:column;border-bottom:1px solid var(--line)}
+.mnav-top{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;
+  font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--text);padding:14px 2px;transition:color .15s ease}
+.mnav-top:hover{color:var(--gold)}
+.mnav-chev{width:18px;height:18px;flex:0 0 auto;color:var(--muted2);transition:transform .25s ease}
+#teams-sub:checked ~ .mnav-top .mnav-chev{transform:rotate(180deg);color:var(--gold)}
+.mnav-sub{display:flex;flex-direction:column;max-height:0;overflow:hidden;padding-left:14px;
+  transition:max-height .3s ease,padding .3s ease,opacity .25s ease;opacity:.4}
+#teams-sub:checked ~ .mnav-sub{max-height:280px;padding:4px 0 12px 14px;opacity:1}
+.mnav-sub a{font-family:var(--disp);font-weight:600;font-size:13px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);padding:9px 2px;transition:color .15s ease}
+.mnav-sub a:hover,.mnav-sub a:focus-visible{color:var(--gold)}
+.mnav-foot{margin-top:auto;padding-top:22px;display:flex;flex-direction:column;gap:16px}
+.mnav-foot .langpill{align-self:flex-start}
+.mnav-tickets{width:100%;justify-content:center}
+html:has(#nav-open:checked){overflow:hidden}
+@media (min-width:1081px){.mnav,.mnav-backdrop{display:none}}
 
 /* HERO */
 .hero{position:relative;min-height:720px;display:flex;align-items:flex-end;overflow:hidden;background:#000}
@@ -84,6 +120,7 @@ p{margin:0}
    linear-gradient(0deg,rgba(10,11,14,.95) 2%,rgba(10,11,14,0) 46%)}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:100% 54px;opacity:.5;mask-image:linear-gradient(0deg,#000,transparent 60%)}
 .hero-in{position:relative;z-index:2;width:100%;padding-top:72px;padding-bottom:0}
+.hero-wrap{max-width:1372px}
 .hero-flex{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
 .hero-copy{max-width:780px}
 .hero-kicker{display:inline-flex;align-items:center;gap:12px;margin-bottom:22px}
@@ -199,7 +236,7 @@ p{margin:0}
 /* CLUB */
 .club{background:var(--ink)}
 .club-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.club-copy h2{font-size:clamp(32px,4vw,52px);text-transform:uppercase;margin-bottom:22px}
+.club-copy h2{font-size:clamp(32px,4vw,52px);text-transform:uppercase;margin-bottom:22px;line-height:1.12}
 .club-copy p{color:var(--muted);font-size:16px;margin-bottom:16px;max-width:520px}
 .club-copy p strong{color:var(--text);font-weight:600}
 .club-tiles{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -258,7 +295,7 @@ p{margin:0}
 @media (max-width:1080px){
   .nav{display:none}
   .burger{display:inline-flex}
-  .hdr-cta .ghost-link{display:none}
+  .hdr-cta .ghost-link,.hdr-cta .langpill,.hdr-cta .btn-gold{display:none}
   .mc-grid{grid-template-columns:1fr}
   .news-grid{grid-template-columns:1fr}
   .teams-grid{grid-template-columns:1fr}
@@ -268,16 +305,37 @@ p{margin:0}
   .ft-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:760px){
-  .hero{min-height:auto;align-items:stretch}
-  .hero .wrap{width:auto!important;height:auto!important}
-  .hero-in{padding-top:92px;padding-bottom:34px}
-  .hero-actions{padding-bottom:0}
-  .nextchip{display:none}
+  /* header: brand + hamburger only, everything else in the drawer */
+  .hdr-in{height:64px;gap:14px}
+  .brand .crest{height:36px;width:36px}
+  .brand .wm-main{font-size:20px;letter-spacing:.04em}
   .brand .wm-sub{display:none}
+  /* hero: taller image, cropped at the top (focus on the team), short punchy sub */
+  .hero{min-height:clamp(560px,86vh,700px);align-items:flex-end}
+  .hero-img{transform:translateY(-16%)}
+  .hero-in{padding-top:40px;padding-bottom:36px}
+  .hero-copy{max-width:100%}
+  .hero h1{font-size:clamp(40px,13vw,58px)}
+  .hero-sub{max-width:100%;font-size:clamp(15px,4.2vw,18px);margin:14px 0 24px}
+  .hero-sub .sub-long{display:none}
+  .hero-actions{flex-direction:column;align-items:stretch;gap:12px;padding-bottom:0}
+  .hero-actions .btn{width:100%;justify-content:center}
+  .nextchip{display:none}
+  /* sections */
   .club-tiles{grid-template-columns:1fr}
   .spon-grid{grid-template-columns:repeat(2,1fr)}
-  .ft-grid{grid-template-columns:1fr}
   .mf-foot{flex-direction:column;align-items:flex-start}
+  /* footer: compact two-column layout, brand on top, tidy bottom bar */
+  .ft{padding:48px 0 26px}
+  .ft-grid{grid-template-columns:1fr 1fr;gap:28px 20px}
+  .ft-brand{grid-column:1 / -1}
+  .ft-brand p{max-width:420px}
+  .ft-bar{flex-direction:column;align-items:flex-start;gap:12px;margin-top:36px}
+  .ft-bar .legal{gap:14px 18px}
+}
+@media (max-width:420px){
+  .spon-grid{grid-template-columns:1fr}
+  .hero h1{font-size:clamp(36px,13.5vw,52px)}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
@@ -326,11 +384,6 @@ section[id],.tile[id]{scroll-margin-top:98px}
 /* =========================================================
    CINEMATIC ANIMATION LAYER
    ========================================================= */
-.hero-num{position:absolute;top:50%;right:-1%;transform:translateY(-50%);z-index:1;
-  font-family:var(--disp);font-weight:700;font-size:clamp(220px,33vw,540px);line-height:.8;
-  color:rgba(255,255,255,.05);letter-spacing:-.03em;pointer-events:none;
-  -webkit-user-select:none;user-select:none;will-change:transform}
-@media (max-width:760px){.hero-num{font-size:52vw;right:-8%;color:rgba(255,255,255,.035)}}
 
 /* image hover zoom (fixed frames, scale only — no distortion) */
 .feat,.ncard .thumb,.teams-media{overflow:hidden}
@@ -367,6 +420,7 @@ section[id],.tile[id]{scroll-margin-top:98px}
 </head>
 <body>
 <input type="checkbox" id="lang-en" class="lang-toggle sr-only" aria-label="Switch language to English / Sprache auf Englisch umschalten">
+<input type="checkbox" id="nav-open" class="sr-only" aria-hidden="true" tabindex="-1">
 
 <div class="page">
 
@@ -406,25 +460,56 @@ section[id],.tile[id]{scroll-margin-top:98px}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 10a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2 2 2 0 0 0 0 4 2 2 0 0 1-2 2H5a2 2 0 0 1-2-2 2 2 0 0 0 0-4Z"></path><path d="M12 8v8" stroke-dasharray="2 2"></path></svg>
           Tickets
         </a>
-        <button class="burger" aria-label="Menü">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
-        </button>
+        <label class="burger" for="nav-open" role="button" tabindex="0" aria-label="Menü öffnen" aria-controls="mnav" aria-expanded="false">
+          <svg class="ic-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+          <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+        </label>
       </div>
     </div>
   </header>
+
+  <!-- ============ MOBILE NAV DRAWER ============ -->
+  <label class="mnav-backdrop" for="nav-open" aria-hidden="true"></label>
+  <aside class="mnav" id="mnav" aria-label="Mobile Navigation">
+    <nav class="mnav-links">
+      <a href="#aktuelles"><span class="de">Aktuelles</span><span class="en">News</span></a>
+      <div class="mnav-group">
+        <input type="checkbox" id="teams-sub" class="sr-only">
+        <label class="mnav-top" for="teams-sub"><span class="de">Teams</span><span class="en">Teams</span><svg class="mnav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></label>
+        <div class="mnav-sub">
+          <a href="#teams"><span class="de">Herren I</span><span class="en">Men I</span></a>
+          <a href="#teams"><span class="de">Herren II</span><span class="en">Men II</span></a>
+          <a href="#teams"><span class="de">Damen</span><span class="en">Women</span></a>
+          <a href="#teams">Jugend · Jungfalken</a>
+        </div>
+      </div>
+      <a href="#verein"><span class="de">Über uns</span><span class="en">About us</span></a>
+      <a href="#hussa">HUSSA!</a>
+      <a href="#sponsoren"><span class="de">Sponsoren</span><span class="en">Sponsors</span></a>
+      <a href="#">Shop</a>
+    </nav>
+    <div class="mnav-foot">
+      <label class="langpill" for="lang-en" title="DE / EN">
+        <span class="seg de-seg">DE</span><span class="seg en-seg">EN</span>
+      </label>
+      <a class="btn btn-gold mnav-tickets" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 10a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2 2 2 0 0 0 0 4 2 2 0 0 1-2 2H5a2 2 0 0 1-2-2 2 2 0 0 0 0-4Z"></path></svg>
+        Tickets
+      </a>
+    </div>
+  </aside>
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="top">
     <img class="hero-img" src="assets/hero.jpg" alt="Mannschaft der Falken HSG im Kreis vor dem Spiel">
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="hero-grid" aria-hidden="true"></div>
-    <div class="hero-num" aria-hidden="true">26</div>
     <div class="hero-in">
-      <div class="wrap" style="width: 1372px; height: 529px">
+      <div class="wrap hero-wrap">
         <div class="hero-copy">
           <span class="hero-kicker"><span class="eyebrow"><span class="de">Regionalliga · Saison 2026 / 2027</span><span class="en">Regionalliga · Season 2026 / 2027</span></span></span>
           <h1><span class="de">Wir sind<br><span class="g">Falken.</span></span><span class="en">We are<br><span class="g">Falken.</span></span></h1>
-          <p class="hero-sub" style="font-weight: 400; font-family: DM Sans, sans-serif; width: 603px"><span class="de">Leidenschaft. Teamgeist. Handball.<br>Die HSG Groß-Bieberau/Modau – zu Hause in Südhessen, laut auf der Tribüne, geschlossen auf dem Feld.</span><span class="en">Passion. Team spirit. Handball. HSG Groß-Bieberau/Modau – at home in South Hesse, loud in the stands, united on the court.</span></p>
+          <p class="hero-sub" style="font-weight: 400; font-family: DM Sans, sans-serif"><span class="de"><span class="sub-lead">Leidenschaft. Teamgeist. Handball.</span><span class="sub-long"><br>Die HSG Groß-Bieberau/Modau – zu Hause in Südhessen, laut auf der Tribüne, geschlossen auf dem Feld.</span></span><span class="en"><span class="sub-lead">Passion. Team spirit. Handball.</span><span class="sub-long"> HSG Groß-Bieberau/Modau – at home in South Hesse, loud in the stands, united on the court.</span></span></p>
         <div class="hero-actions">
             <a class="btn btn-gold" href="#spiele">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
@@ -467,7 +552,7 @@ section[id],.tile[id]{scroll-margin-top:98px}
         </div>
       </div>
   </div><section class="spon sec-pad" id="sponsoren">
-    <div class="wrap" style="height: 119px">
+    <div class="wrap">
       <div class="spon-head">
         <span class="eyebrow"><span class="de">Partner &amp; Förderer</span><span class="en">Partners &amp; Supporters</span></span>
         <h2><span class="de">Unsere Partner</span><span class="en">Our Partners</span></h2>
@@ -790,24 +875,51 @@ section[id],.tile[id]{scroll-margin-top:98px}
     els.forEach(function(el){ el.classList.add('is-in'); });
   }
 
-  /* hero parallax (image + numeral, different speeds) — desktop widths only */
+  /* hero parallax (background image) — desktop widths only */
   var hero = document.querySelector('.hero'),
-      img  = document.querySelector('.hero-img'),
-      num  = document.querySelector('.hero-num');
+      img  = document.querySelector('.hero-img');
   var mq = window.matchMedia('(min-width:761px)'), on=false, ticking=false;
   function apply(){
     ticking=false; if(!hero) return;
     var r = hero.getBoundingClientRect(), h = r.height||1;
     var p = Math.min(Math.max(-r.top/h,0),1);           // 0 at top of hero → 1 when scrolled past
     if(img) img.style.transform = 'translate3d(0,'+(-p*150).toFixed(1)+'px,0)';
-    if(num) num.style.transform = 'translate3d(0,calc(-50% + '+(-p*58).toFixed(1)+'px),0)';
   }
   function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(apply); } }
   function enable(){ if(on)return; on=true; window.addEventListener('scroll',onScroll,{passive:true}); window.addEventListener('resize',apply); apply(); }
-  function disable(){ if(!on)return; on=false; window.removeEventListener('scroll',onScroll); window.removeEventListener('resize',apply); if(img)img.style.transform=''; if(num)num.style.transform=''; }
+  function disable(){ if(!on)return; on=false; window.removeEventListener('scroll',onScroll); window.removeEventListener('resize',apply); if(img)img.style.transform=''; }
   mq.matches ? enable() : disable();
   if(mq.addEventListener) mq.addEventListener('change',function(e){ e.matches?enable():disable(); });
   else if(mq.addListener) mq.addListener(function(e){ e.matches?enable():disable(); });
+})();
+</script>
+
+<script>
+/* ---------- mobile navigation drawer ---------- */
+(function(){
+  var cb=document.getElementById('nav-open');
+  var burger=document.querySelector('.burger');
+  var drawer=document.getElementById('mnav');
+  if(!cb) return;
+  function sync(){ if(burger) burger.setAttribute('aria-expanded', cb.checked?'true':'false'); }
+  cb.addEventListener('change',sync); sync();
+  if(burger){
+    burger.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); cb.checked=!cb.checked; cb.dispatchEvent(new Event('change')); }
+    });
+  }
+  if(drawer){
+    [].slice.call(drawer.querySelectorAll('a')).forEach(function(a){
+      a.addEventListener('click',function(){ cb.checked=false; cb.dispatchEvent(new Event('change')); });
+    });
+  }
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&cb.checked){ cb.checked=false; cb.dispatchEvent(new Event('change')); }
+  });
+  var supportsHas=(function(){ try{ return CSS.supports('selector(:has(*))'); }catch(e){ return false; } })();
+  if(!supportsHas){
+    cb.addEventListener('change',function(){ document.documentElement.style.overflow=cb.checked?'hidden':''; });
+  }
 })();
 </script>
 
